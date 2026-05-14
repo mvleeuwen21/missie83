@@ -7,15 +7,8 @@
 <style>
   :root {
     --groen: #22c55e;
-    --groen-licht: #dcfce7;
     --oranje: #f97316;
-    --oranje-licht: #ffedd5;
     --rood: #ef4444;
-    --rood-licht: #fee2e2;
-    --blauw: #3b82f6;
-    --blauw-licht: #dbeafe;
-    --paars: #8b5cf6;
-    --paars-licht: #ede9fe;
     --grijs: #6b7280;
     --grijs-licht: #f3f4f6;
     --wit: #ffffff;
@@ -52,22 +45,9 @@
     text-align: center;
   }
 
-  .login-logo {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .login-card h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-
-  .login-card p {
-    color: var(--tekst-licht);
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-  }
+  .login-logo { font-size: 3rem; margin-bottom: 0.5rem; }
+  .login-card h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .login-card p { color: var(--tekst-licht); font-size: 0.9rem; margin-bottom: 2rem; }
 
   .login-card input {
     width: 100%;
@@ -92,17 +72,10 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
   }
 
   .login-card button:hover { background: #16a34a; }
-
-  .login-fout {
-    color: var(--rood);
-    font-size: 0.85rem;
-    margin-top: 0.75rem;
-    display: none;
-  }
+  .login-fout { color: var(--rood); font-size: 0.85rem; margin-top: 0.75rem; display: none; }
 
   /* HEADER */
   header {
@@ -117,15 +90,7 @@
     z-index: 100;
   }
 
-  .header-links { display: flex; align-items: center; gap: 0.5rem; }
-
-  header h1 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+  header h1 { font-size: 1.1rem; font-weight: 700; }
 
   .uitlog-btn {
     padding: 0.4rem 0.75rem;
@@ -137,12 +102,32 @@
     cursor: pointer;
   }
 
-  /* MAIN */
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
+  /* NAV TABS */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--rand);
+    background: var(--wit);
+    padding: 0 1.5rem;
   }
+
+  .nav-tab {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--grijs);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav-tab.actief { color: var(--groen); border-bottom-color: var(--groen); }
+
+  /* MAIN */
+  main { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; }
 
   /* WEEKSCORE */
   .weekscore-bar {
@@ -157,23 +142,9 @@
     flex-wrap: wrap;
   }
 
-  .weekscore-label {
-    font-weight: 700;
-    font-size: 1rem;
-  }
-
-  .weekscore-cijfer {
-    font-size: 2rem;
-    font-weight: 800;
-    min-width: 3.5rem;
-  }
-
-  .macro-totalen {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    flex: 1;
-  }
+  .weekscore-label { font-weight: 700; font-size: 1rem; }
+  .weekscore-cijfer { font-size: 2rem; font-weight: 800; min-width: 3.5rem; }
+  .macro-totalen { display: flex; gap: 1rem; flex-wrap: wrap; flex: 1; }
 
   .macro-chip {
     display: flex;
@@ -187,277 +158,6 @@
 
   .macro-chip .waarde { font-weight: 700; font-size: 0.95rem; }
   .macro-chip .naam { font-size: 0.7rem; color: var(--tekst-licht); }
-
-  /* DAGENRASTER */
-  .dagen-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1rem;
-  }
-
-  /* DAG CARD */
-  .dag-card {
-    background: var(--wit);
-    border: 1px solid var(--rand);
-    border-radius: 1rem;
-    overflow: hidden;
-  }
-
-  .dag-header {
-    padding: 0.875rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--rand);
-  }
-
-  .dag-naam {
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .dag-badges {
-    display: flex;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-    margin-top: 0.25rem;
-  }
-
-  .badge {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.2rem 0.5rem;
-    border-radius: 99px;
-  }
-
-  .badge-training { background: #dbeafe; color: #1d4ed8; }
-  .badge-rust { background: #f3f4f6; color: #4b5563; }
-  .badge-gezin { background: #fce7f3; color: #9d174d; }
-  .badge-papat { background: #fef3c7; color: #92400e; }
-
-  .dag-score-ring {
-    width: 44px;
-    height: 44px;
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  .dag-score-ring svg { transform: rotate(-90deg); }
-
-  .dag-score-tekst {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--tekst);
-  }
-
-  /* MAALTIJDEN */
-  .maaltijden { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
-
-  .maaltijd {
-    border: 1px solid var(--rand);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    transition: border-color 0.2s;
-  }
-
-  .maaltijd:hover { border-color: #d1d5db; }
-
-  .maaltijd-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .maaltijd-info { flex: 1; }
-
-  .maaltijd-type {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--tekst-licht);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.15rem;
-  }
-
-  .maaltijd-naam {
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-
-  .maaltijd-macros {
-    display: flex;
-    gap: 0.35rem;
-    margin-top: 0.35rem;
-    flex-wrap: wrap;
-  }
-
-  .macro-tag {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.45rem;
-    border-radius: 99px;
-    font-weight: 500;
-  }
-
-  .tag-kcal { background: #fef3c7; color: #92400e; }
-  .tag-eiwit { background: #dbeafe; color: #1d4ed8; }
-  .tag-kh { background: #f0fdf4; color: #166534; }
-  .tag-vet { background: #fdf4ff; color: #6b21a8; }
-
-  /* SLIDER */
-  .slider-sectie { display: flex; align-items: center; gap: 0.5rem; }
-
-  .slider-wrap { flex: 1; position: relative; }
-
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: var(--rand);
-    outline: none;
-    cursor: pointer;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--groen);
-    border: 2px solid white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--groen);
-    border: 2px solid white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-
-  .slider-pct {
-    font-size: 0.8rem;
-    font-weight: 700;
-    width: 2.5rem;
-    text-align: right;
-    color: var(--tekst);
-  }
-
-  .gegeten-macros {
-    margin-top: 0.4rem;
-    font-size: 0.72rem;
-    color: var(--tekst-licht);
-    display: none;
-  }
-
-  .gegeten-macros.zichtbaar { display: block; }
-
-  /* DAG TOTALEN */
-  .dag-totalen {
-    border-top: 1px solid var(--rand);
-    padding: 0.875rem 1.25rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-
-  .dag-totaal-item {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .dag-totaal-waarde {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-
-  .dag-totaal-label {
-    font-size: 0.7rem;
-    color: var(--tekst-licht);
-  }
-
-  .dag-totaal-doel {
-    font-size: 0.7rem;
-    color: var(--tekst-licht);
-  }
-
-  /* PROGRESSIEBALK */
-  .voortgang-bar {
-    height: 4px;
-    background: var(--rand);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-top: 0.25rem;
-  }
-
-  .voortgang-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-
-  /* NA TRAINING */
-  .na-training {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 0.75rem;
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    color: #166534;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* SYNC STATUS */
-  .sync-status {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    background: var(--wit);
-    border: 1px solid var(--rand);
-    border-radius: 0.75rem;
-    padding: 0.5rem 0.875rem;
-    font-size: 0.8rem;
-    color: var(--tekst-licht);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-
-  .sync-status.zichtbaar { opacity: 1; }
-  .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); }
-  .sync-dot.bezig { background: var(--oranje); animation: pulse 1s infinite; }
-
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  /* SCORE KLEUR */
-  .score-rood { color: var(--rood); }
-  .score-oranje { color: var(--oranje); }
-  .score-groen { color: var(--groen); }
-
-  /* RESPONSIVE */
-  @media (max-width: 640px) {
-    .dagen-grid { grid-template-columns: 1fr; }
-    .weekscore-bar { flex-direction: column; align-items: flex-start; }
-  }
 
   /* WEEK TABS */
   .week-tab-bar {
@@ -481,10 +181,301 @@
     transition: all 0.15s;
   }
 
-  .week-tab.actief {
-    background: var(--groen);
-    color: white;
-    border-color: var(--groen);
+  .week-tab.actief { background: var(--groen); color: white; border-color: var(--groen); }
+
+  /* DAGEN GRID */
+  .dagen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+
+  /* DAG CARD */
+  .dag-card {
+    background: var(--wit);
+    border: 1px solid var(--rand);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .dag-header {
+    padding: 0.875rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rand);
+  }
+
+  .dag-naam { font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .dag-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.25rem; }
+
+  .badge { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 99px; }
+  .badge-training { background: #dbeafe; color: #1d4ed8; }
+  .badge-rust { background: #f3f4f6; color: #4b5563; }
+  .badge-gezin { background: #fce7f3; color: #9d174d; }
+  .badge-papat { background: #fef3c7; color: #92400e; }
+
+  .dag-score-ring { width: 44px; height: 44px; position: relative; flex-shrink: 0; }
+  .dag-score-ring svg { transform: rotate(-90deg); }
+  .dag-score-tekst {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.65rem; font-weight: 700; color: var(--tekst);
+  }
+
+  /* MAALTIJDEN */
+  .maaltijden { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .maaltijd {
+    border: 1px solid var(--rand);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .maaltijd-type {
+    font-size: 0.7rem; font-weight: 600; color: var(--tekst-licht);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem;
+  }
+
+  .maaltijd-naam { font-size: 0.875rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.35rem; }
+
+  .maaltijd-macros { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+
+  .macro-tag { font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 99px; font-weight: 500; }
+  .tag-kcal { background: #fef3c7; color: #92400e; }
+  .tag-eiwit { background: #dbeafe; color: #1d4ed8; }
+  .tag-kh { background: #f0fdf4; color: #166534; }
+  .tag-vet { background: #fdf4ff; color: #6b21a8; }
+
+  /* SLIDER */
+  .slider-sectie { display: flex; align-items: center; gap: 0.5rem; }
+  .slider-wrap { flex: 1; }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%; height: 6px;
+    border-radius: 3px; background: var(--rand);
+    outline: none; cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--groen); border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--groen); border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2); cursor: pointer;
+  }
+
+  .slider-pct { font-size: 0.8rem; font-weight: 700; width: 2.5rem; text-align: right; }
+
+  .gegeten-macros { margin-top: 0.4rem; font-size: 0.72rem; color: var(--tekst-licht); display: none; }
+  .gegeten-macros.zichtbaar { display: block; }
+
+  /* BEREIDING */
+  .bereiding-toggle {
+    margin-top: 0.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: var(--tekst-licht);
+    transition: color 0.15s;
+  }
+  .bereiding-toggle:hover { color: var(--tekst); }
+  .bereiding-toggle svg { width: 18px; height: 18px; }
+
+  .bereiding-inhoud {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--tekst);
+    border-left: 3px solid var(--groen);
+  }
+  .bereiding-inhoud.zichtbaar { display: block; }
+  .bereiding-inhoud ol { padding-left: 1.2rem; margin: 0; }
+  .bereiding-inhoud li { margin-bottom: 0.2rem; }
+
+  /* NA TRAINING */
+  .na-training {
+    background: #f0fdf4; border: 1px solid #bbf7d0;
+    border-radius: 0.75rem; padding: 0.6rem 1rem;
+    font-size: 0.8rem; color: #166534;
+  }
+
+  /* NOTITIE */
+  .notitie-sectie {
+    border-top: 1px solid var(--rand);
+    padding: 0.75rem 1.25rem;
+  }
+
+  .notitie-toggle {
+    font-size: 0.8rem;
+    color: var(--tekst-licht);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .notitie-toggle:hover { color: var(--tekst); }
+
+  .notitie-veld {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid var(--rand);
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+    outline: none;
+    color: var(--tekst);
+    background: var(--wit);
+    transition: border-color 0.2s;
+    display: none;
+  }
+
+  .notitie-veld:focus { border-color: var(--groen); }
+  .notitie-veld.zichtbaar { display: block; }
+
+  /* DAG TOTALEN */
+  .dag-totalen {
+    border-top: 1px solid var(--rand);
+    padding: 0.875rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .dag-totaal-item { display: flex; flex-direction: column; }
+  .dag-totaal-waarde { font-size: 1.1rem; font-weight: 700; }
+  .dag-totaal-label { font-size: 0.7rem; color: var(--tekst-licht); }
+  .dag-totaal-doel { font-size: 0.7rem; color: var(--tekst-licht); }
+
+  .voortgang-bar { height: 4px; background: var(--rand); border-radius: 2px; overflow: hidden; margin-top: 0.25rem; }
+  .voortgang-fill { height: 100%; border-radius: 2px; transition: width 0.3s ease; }
+
+  /* SCORE KLEUR */
+  .score-rood { color: var(--rood); }
+  .score-oranje { color: var(--oranje); }
+  .score-groen { color: var(--groen); }
+
+  /* BOODSCHAPPEN */
+  .boodschappen-view { max-width: 700px; }
+
+  .boodschappen-voortgang {
+    background: var(--wit);
+    border: 1px solid var(--rand);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .boodschappen-voortgang-tekst { font-size: 0.875rem; color: var(--grijs); white-space: nowrap; }
+
+  .boodschappen-voortgang-bar {
+    flex: 1; height: 6px;
+    background: var(--rand); border-radius: 3px; overflow: hidden;
+  }
+
+  .boodschappen-voortgang-fill { height: 100%; background: var(--groen); border-radius: 3px; transition: width 0.3s; }
+
+  .reset-btn {
+    font-size: 0.8rem; color: var(--grijs);
+    background: var(--grijs-licht); border: none;
+    border-radius: 0.5rem; padding: 0.35rem 0.75rem;
+    cursor: pointer; white-space: nowrap;
+  }
+
+  .boodschappen-categorie {
+    background: var(--wit);
+    border: 1px solid var(--rand);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .boodschappen-categorie-titel {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grijs);
+    border-bottom: 1px solid var(--rand);
+    background: #fafafa;
+  }
+
+  .boodschap-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--rand);
+    cursor: pointer;
+    transition: background 0.1s;
+    user-select: none;
+  }
+
+  .boodschap-item:last-child { border-bottom: none; }
+  .boodschap-item:hover { background: #fafafa; }
+  .boodschap-item.gekocht { opacity: 0.4; }
+  .boodschap-item.gekocht .boodschap-naam { text-decoration: line-through; }
+
+  .boodschap-checkbox {
+    width: 22px; height: 22px;
+    border-radius: 6px; border: 1.5px solid var(--rand);
+    background: var(--wit);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 0.8rem; color: white;
+    transition: all 0.15s;
+  }
+
+  .boodschap-item.gekocht .boodschap-checkbox { background: var(--groen); border-color: var(--groen); }
+
+  .boodschap-naam { flex: 1; font-size: 0.9rem; font-weight: 500; }
+  .boodschap-detail { font-size: 0.75rem; color: var(--grijs); text-align: right; }
+
+  /* SYNC */
+  .sync-status {
+    position: fixed; bottom: 1rem; right: 1rem;
+    background: var(--wit); border: 1px solid var(--rand);
+    border-radius: 0.75rem; padding: 0.5rem 0.875rem;
+    font-size: 0.8rem; color: var(--tekst-licht);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    display: flex; align-items: center; gap: 0.4rem;
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  }
+
+  .sync-status.zichtbaar { opacity: 1; }
+  .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--groen); }
+  .sync-dot.bezig { background: var(--oranje); animation: pulse 1s infinite; }
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .dagen-grid { grid-template-columns: 1fr; }
+    .weekscore-bar { flex-direction: column; align-items: flex-start; }
   }
 
   .hidden { display: none !important; }
@@ -492,7 +483,7 @@
 </head>
 <body>
 
-<!-- LOGIN SCHERM -->
+<!-- LOGIN -->
 <div id="login-scherm">
   <div class="login-card">
     <div class="login-logo">🎯</div>
@@ -504,34 +495,52 @@
   </div>
 </div>
 
-<!-- HOOFD APP (verborgen tot ingelogd) -->
+<!-- APP -->
 <div id="app" class="hidden">
-
   <header>
     <h1>🎯 Missie 83</h1>
-    <div class="header-links">
-      <button class="uitlog-btn" onclick="uitloggen()">Uitloggen</button>
-    </div>
+    <button class="uitlog-btn" onclick="uitloggen()">Uitloggen</button>
   </header>
 
-  <main>
-    <div class="week-tab-bar" id="week-tabs"></div>
+  <!-- NAV -->
+  <nav class="nav-tabs">
+    <button class="nav-tab actief" onclick="toonView('menu', this)">📋 Menu</button>
+    <button class="nav-tab" onclick="toonView('boodschappen', this)">🛒 Boodschappen</button>
+  </nav>
 
-    <!-- WEEKSCORE -->
-    <div class="weekscore-bar">
-      <div>
-        <div class="weekscore-label">Weekscore</div>
-        <div class="weekscore-cijfer" id="weekscore-tekst">—</div>
+  <main>
+    <!-- MENU VIEW -->
+    <div id="view-menu">
+      <div class="week-tab-bar" id="week-tabs"></div>
+
+      <div class="weekscore-bar">
+        <div>
+          <div class="weekscore-label">Weekscore</div>
+          <div class="weekscore-cijfer" id="weekscore-tekst">—</div>
+        </div>
+        <div class="macro-totalen">
+          <div class="macro-chip"><span class="waarde" id="week-kcal">0</span><span class="naam">kcal</span></div>
+          <div class="macro-chip"><span class="waarde" id="week-eiwit">0g</span><span class="naam">eiwit</span></div>
+          <div class="macro-chip"><span class="waarde" id="week-kh">0g</span><span class="naam">koolhydr.</span></div>
+          <div class="macro-chip"><span class="waarde" id="week-vet">0g</span><span class="naam">vet</span></div>
+        </div>
       </div>
-      <div class="macro-totalen">
-        <div class="macro-chip"><span class="waarde" id="week-kcal">0</span><span class="naam">kcal</span></div>
-        <div class="macro-chip"><span class="waarde" id="week-eiwit">0g</span><span class="naam">eiwit</span></div>
-        <div class="macro-chip"><span class="waarde" id="week-kh">0g</span><span class="naam">koolhydr.</span></div>
-        <div class="macro-chip"><span class="waarde" id="week-vet">0g</span><span class="naam">vet</span></div>
-      </div>
+
+      <div class="dagen-grid" id="dagen-container"></div>
     </div>
 
-    <div class="dagen-grid" id="dagen-container"></div>
+    <!-- BOODSCHAPPEN VIEW -->
+    <div id="view-boodschappen" class="hidden boodschappen-view">
+      <div style="font-size:0.8rem;color:var(--grijs);margin-bottom:0.75rem;" id="boodschappen-week-label"></div>
+      <div class="boodschappen-voortgang">
+        <span class="boodschappen-voortgang-tekst" id="boodschappen-voortgang-tekst">0 van 0 gekocht</span>
+        <div class="boodschappen-voortgang-bar">
+          <div class="boodschappen-voortgang-fill" id="boodschappen-voortgang-fill" style="width:0%"></div>
+        </div>
+        <button class="reset-btn" onclick="resetBoodschappen()">Reset</button>
+      </div>
+      <div id="boodschappen-container"></div>
+    </div>
   </main>
 
   <div class="sync-status" id="sync-status">
@@ -569,137 +578,50 @@ function uitloggen() {
 }
 
 // ═══════════════════════════════════════════════════════
-//  FIREBASE CONFIG
-//  Vervang onderstaande URL met jouw eigen Firebase project
+//  NAV
+// ═══════════════════════════════════════════════════════
+function toonView(naam, btn) {
+  document.getElementById('view-menu').classList.toggle('hidden', naam !== 'menu');
+  document.getElementById('view-boodschappen').classList.toggle('hidden', naam !== 'boodschappen');
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('actief'));
+  btn.classList.add('actief');
+}
+
+// ═══════════════════════════════════════════════════════
+//  FIREBASE
 // ═══════════════════════════════════════════════════════
 const FIREBASE_URL = 'https://missie83-default-rtdb.europe-west1.firebasedatabase.app';
 
-// ═══════════════════════════════════════════════════════
-//  MENU DATA
-// ═══════════════════════════════════════════════════════
-const DOELEN = {
-  training: { kcal: 1750, eiwit: 145, kh: 120, vet: 60 },
-  rust:     { kcal: 1350, eiwit: 110, kh: 100, vet: 45 }
-};
-
-const WEKEN = [
-  {
-    id: 'week-2026-20',
-    label: 'Week 20 (12–18 mei)',
-    dagen: [
-      {
-        naam: 'Maandag',
-        type: 'training',
-        badges: ['training'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: 'Havermout (80g) met kwark (150g), walnoten & banaan', kcal: 490, eiwit: 30, kh: 52, vet: 14 },
-          { type: 'Lunch',   naam: '200g kipfilet wrap met hummus, spinazie & paprika',   kcal: 550, eiwit: 50, kh: 35, vet: 14 },
-          { type: 'Diner',   naam: '200g zalm, zoete aardappel (150g) & broccoli',        kcal: 620, eiwit: 50, kh: 32, vet: 22 },
-        ],
-        naTraining: '3 hardgekookte eieren — ~18g eiwit, ~210 kcal'
-      },
-      {
-        naam: 'Dinsdag',
-        type: 'rust',
-        badges: ['rust'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: '3 eieren roerei met volkoren toast & avocado',              kcal: 450, eiwit: 25, kh: 22, vet: 20 },
-          { type: 'Lunch',   naam: 'Griekse yoghurt (250g) met mixed nuts & blauwe bessen',     kcal: 380, eiwit: 20, kh: 22, vet: 16 },
-          { type: 'Diner',   naam: '150g kipgehakt, linzen (100g) & geroosterde paprika',       kcal: 520, eiwit: 55, kh: 40, vet: 10 },
-        ]
-      },
-      {
-        naam: 'Woensdag',
-        type: 'training',
-        badges: ['training'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: 'Kwark (200g) met havermout, honing & aardbeien',            kcal: 420, eiwit: 30, kh: 48, vet:  8 },
-          { type: 'Lunch',   naam: '200g tonijn op volkoren brood met komkommer & tomaat',      kcal: 480, eiwit: 45, kh: 30, vet: 10 },
-          { type: 'Diner',   naam: '200g kabeljauw, basmatirijst (100g) & groene groenten',     kcal: 580, eiwit: 50, kh: 42, vet: 12 },
-        ],
-        naTraining: '3 hardgekookte eieren — ~18g eiwit, ~210 kcal'
-      },
-      {
-        naam: 'Donderdag',
-        type: 'rust',
-        badges: ['rust'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: '2 eieren + 2 eiwitten scrambled met spinazie & feta',      kcal: 380, eiwit: 28, kh:  8, vet: 20 },
-          { type: 'Lunch',   naam: 'Kipsoep (zelfgemaakt) met groenten & vermicelli',           kcal: 350, eiwit: 30, kh: 28, vet:  8 },
-          { type: 'Diner',   naam: '200g rundergehakt (mager), zoete aardappel & courgette',   kcal: 560, eiwit: 50, kh: 30, vet: 18 },
-        ]
-      },
-      {
-        naam: 'Vrijdag',
-        type: 'rust',
-        badges: ['rust', 'patat'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: '3 eieren + havermout (60g) met melk & kaneel',             kcal: 420, eiwit: 28, kh: 40, vet: 14 },
-          { type: 'Lunch',   naam: '150g zalm sashimi-stijl met rijst & edamame',              kcal: 480, eiwit: 40, kh: 38, vet: 12 },
-          { type: 'Diner',   naam: 'Portie patat (~300g) + 1 kroket',                          kcal: 900, eiwit: 13, kh: 95, vet: 42 },
-        ]
-      },
-      {
-        naam: 'Zaterdag',
-        type: 'rust',
-        badges: ['rust', 'gezin'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: '1 kaiserbroodje + 1 ei (gebakken of gekookt)',             kcal: 280, eiwit: 13, kh: 30, vet: 10 },
-          { type: 'Lunch',   naam: '200g kwark met noten + 2 extra eieren hardgekookt',        kcal: 420, eiwit: 38, kh: 12, vet: 18 },
-          { type: 'Diner',   naam: '200g biefstuk (mager), gegrilde groenten & quinoa',        kcal: 580, eiwit: 55, kh: 28, vet: 16 },
-        ]
-      },
-      {
-        naam: 'Zondag',
-        type: 'rust',
-        badges: ['rust', 'gezin'],
-        maaltijden: [
-          { type: 'Ontbijt', naam: '1 kaiserbroodje + 1 ei (gebakken of gekookt)',             kcal: 280, eiwit: 13, kh: 30, vet: 10 },
-          { type: 'Lunch',   naam: 'Kipfilet salade met kikkererwten, feta & olijfolie',       kcal: 500, eiwit: 45, kh: 22, vet: 18 },
-          { type: 'Diner',   naam: '200g garnalen, volkorenpasta (80g) & tomatensaus',         kcal: 540, eiwit: 48, kh: 52, vet: 10 },
-        ]
-      }
-    ]
-  }
-];
-
-// ═══════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════
-let actieveWeekId = WEKEN[0].id;
-let percentages = {};
 let syncTimer = null;
 
-// ═══════════════════════════════════════════════════════
-//  OPSLAG (Firebase + localStorage fallback)
-// ═══════════════════════════════════════════════════════
 async function laadData() {
-  if (!FIREBASE_URL || FIREBASE_URL === 'JOUW_FIREBASE_DATABASE_URL') {
-    const opgeslagen = localStorage.getItem('missie83_percentages');
-    if (opgeslagen) percentages = JSON.parse(opgeslagen);
-    return;
-  }
   try {
-    const res = await fetch(`${FIREBASE_URL}/percentages.json`);
+    const res = await fetch(`${FIREBASE_URL}/data.json`);
     const data = await res.json();
-    if (data) percentages = data;
+    if (data) {
+      percentages = data.percentages || {};
+      notities = data.notities || {};
+      boodschapStatus = data.boodschappen || {};
+    }
   } catch(e) {
-    const opgeslagen = localStorage.getItem('missie83_percentages');
-    if (opgeslagen) percentages = JSON.parse(opgeslagen);
+    const opgeslagen = localStorage.getItem('missie83_data');
+    if (opgeslagen) {
+      const d = JSON.parse(opgeslagen);
+      percentages = d.percentages || {};
+      notities = d.notities || {};
+      boodschapStatus = d.boodschappen || {};
+    }
   }
 }
 
 async function slaOp() {
-  localStorage.setItem('missie83_percentages', JSON.stringify(percentages));
-  if (!FIREBASE_URL || FIREBASE_URL === 'JOUW_FIREBASE_DATABASE_URL') {
-    toonSync('Opgeslagen (lokaal) ✓', false);
-    return;
-  }
+  const data = { percentages, notities, boodschappen: boodschapStatus };
+  localStorage.setItem('missie83_data', JSON.stringify(data));
   try {
-    await fetch(`${FIREBASE_URL}/percentages.json`, {
+    await fetch(`${FIREBASE_URL}/data.json`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(percentages)
+      body: JSON.stringify(data)
     });
     toonSync('Opgeslagen ✓', false);
   } catch(e) {
@@ -716,9 +638,223 @@ function toonSync(tekst, bezig) {
   syncTimer = setTimeout(() => el.classList.remove('zichtbaar'), 2500);
 }
 
+function debounceOpslaan() {
+  toonSync('Opslaan…', true);
+  clearTimeout(window._saveTimer);
+  window._saveTimer = setTimeout(slaOp, 1200);
+}
+
 // ═══════════════════════════════════════════════════════
-//  BEREKENINGEN
+//  MENU DATA
 // ═══════════════════════════════════════════════════════
+const DOELEN = {
+  training: { kcal: 1750, eiwit: 145, kh: 120, vet: 60 },
+  rust:     { kcal: 1350, eiwit: 110, kh: 100, vet: 45 }
+};
+
+const WEKEN = [
+  {
+    id: 'week-2026-21',
+    label: 'Week 21 (18–24 mei)',
+    dagen: [
+      {
+        naam: 'Maandag 18 mei', type: 'training', badges: ['training'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: 'Havermout (80g) met kwark (150g), walnoten & banaan', kcal: 490, eiwit: 30, kh: 52, vet: 14,
+            bereiding: '1. Kook havermout met water of melk (±3 min).\n2. Roer kwark erdoorheen.\n3. Beleg met gesneden banaan en walnoten.' },
+          { type: 'Lunch', naam: '200g kipfilet wrap met hummus, spinazie & paprika', kcal: 550, eiwit: 50, kh: 35, vet: 14,
+            bereiding: '1. Bak kipfilet in koekenpan op middelhoog vuur, 4 min per kant.\n2. Laat even rusten, snijd in reepjes.\n3. Smeer hummus op wrap, beleg met spinazie, paprika en kip.\n4. Oprollen en klaar.' },
+          { type: 'Diner', naam: '200g zalm, zoete aardappel (150g) & broccoli', kcal: 620, eiwit: 50, kh: 32, vet: 22,
+            bereiding: '1. Verwarm oven op 200°C. Snijd zoete aardappel in blokjes, 25 min in oven met olijfolie.\n2. Bak zalm in pan op huid, 3 min per kant of tot gaar.\n3. Stoom broccoli 5 min.\n4. Serveer samen.' },
+        ],
+        naTraining: '3 hardgekookte eieren — ~18g eiwit, ~210 kcal'
+      },
+      {
+        naam: 'Dinsdag 19 mei', type: 'rust', badges: ['rust'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: '3 eieren roerei met volkoren toast & avocado', kcal: 450, eiwit: 25, kh: 22, vet: 20,
+            bereiding: '1. Klop 3 eieren los met snufje zout.\n2. Bak op laag vuur in beetje boter, roer langzaam.\n3. Rooster toast.\n4. Halveer avocado, bestrooi met peper en zout.' },
+          { type: 'Lunch', naam: 'Griekse yoghurt (250g) met mixed nuts & blauwe bessen', kcal: 380, eiwit: 20, kh: 22, vet: 16,
+            bereiding: '1. Schep yoghurt in kom.\n2. Voeg blauwe bessen en mixed nuts toe.\n3. Eventueel een theelepel honing erover.' },
+          { type: 'Diner', naam: '🟠 HelloFresh: Fusion biefstukreepjes, Thais basilicum, rijst, paksoi & sperziebonen', kcal: 643, eiwit: 37, kh: 55, vet: 18, bereiding: null },
+        ]
+      },
+      {
+        naam: 'Woensdag 20 mei', type: 'training', badges: ['training'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: 'Kwark (200g) met havermout, honing & aardbeien', kcal: 420, eiwit: 30, kh: 48, vet: 8,
+            bereiding: '1. Kook havermout (60g) met water, 3 min.\n2. Laat iets afkoelen.\n3. Meng kwark erdoorheen.\n4. Beleg met aardbeien en een theelepel honing.' },
+          { type: 'Lunch', naam: '200g tonijn op volkoren brood met komkommer & tomaat', kcal: 480, eiwit: 45, kh: 30, vet: 10,
+            bereiding: '1. Laat tonijn uitlekken.\n2. Meng eventueel met beetje citroensap en peper.\n3. Leg op volkoren brood.\n4. Beleg met plakjes komkommer en tomaat.' },
+          { type: 'Diner', naam: '🟠 HelloFresh: Pangasiusfilet in botersaus, kruidige parelcouscous, olijven & peterselie', kcal: 670, eiwit: 35, kh: 52, vet: 22, bereiding: null },
+        ],
+        naTraining: '3 hardgekookte eieren — ~18g eiwit, ~210 kcal'
+      },
+      {
+        naam: 'Donderdag 21 mei', type: 'rust', badges: ['rust'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: '2 eieren + 2 eiwitten scrambled met spinazie & feta', kcal: 380, eiwit: 28, kh: 8, vet: 20,
+            bereiding: '1. Klop 2 hele eieren + 2 eiwitten los.\n2. Bak spinazie kort in pan tot geslonken.\n3. Voeg eimengsel toe op laag vuur, roer langzaam.\n4. Verkruimel feta erover voor serveren.' },
+          { type: 'Lunch', naam: 'Griekse yoghurt (200g) met gekookte kipfilet (100g) & komkommer', kcal: 320, eiwit: 38, kh: 10, vet: 6,
+            bereiding: '1. Kook kipfilet 15 min in lichtgezouten water (of gebruik restje van maandag).\n2. Laat afkoelen, snijd in stukjes.\n3. Schep yoghurt in kom, leg kip erop.\n4. Snijd komkommer erbij, breng op smaak met peper.' },
+          { type: 'Diner', naam: '🟠 HelloFresh: Kipfilet met mediterrane kruiden, aardappelpartjes, rode biet & salade', kcal: 539, eiwit: 35, kh: 42, vet: 14, bereiding: null },
+        ]
+      },
+      {
+        naam: 'Vrijdag 22 mei', type: 'rust', badges: ['rust', 'patat'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: '3 eieren + havermout (60g) met melk & kaneel', kcal: 420, eiwit: 28, kh: 40, vet: 14,
+            bereiding: '1. Kook havermout met melk (±200ml), 3-4 min roeren.\n2. Bak ondertussen 3 eieren zoals je wilt (gebakken of roerei).\n3. Bestrooi havermout met kaneel.' },
+          { type: 'Lunch', naam: '150g zalm sashimi-stijl met rijst & edamame', kcal: 480, eiwit: 40, kh: 38, vet: 12,
+            bereiding: '1. Kook zilvervliesrijst volgens verpakking.\n2. Ontdooi edamame of kook 3 min.\n3. Snijd verse zalm in dunne plakjes.\n4. Serveer met een beetje sojasaus en sesamzaad.' },
+          { type: 'Diner', naam: 'Portie patat (~300g) + 1 kroket', kcal: 900, eiwit: 13, kh: 95, vet: 42,
+            bereiding: '1. Afhalen bij de snackbar. Genieten! 🍟' },
+        ]
+      },
+      {
+        naam: 'Zaterdag 23 mei', type: 'rust', badges: ['rust', 'gezin'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: '1 kaiserbroodje + 1 ei (gebakken of gekookt)', kcal: 280, eiwit: 13, kh: 30, vet: 10,
+            bereiding: '1. Bak ei in koekenpan met beetje boter (gebakken), of kook 7 min (zachtgekookt) of 10 min (hardgekookt).\n2. Leg op het kaiserbroodje.' },
+          { type: 'Lunch', naam: '200g kwark met noten + 2 extra eieren hardgekookt', kcal: 420, eiwit: 38, kh: 12, vet: 18,
+            bereiding: '1. Kook 2 eieren 10 min, laat afkoelen onder koud water.\n2. Schep kwark in kom.\n3. Strooi mixed nuts erover.\n4. Pel eieren en eet erbij.' },
+          { type: 'Diner', naam: '200g biefstuk (mager), gegrilde groenten & quinoa', kcal: 580, eiwit: 55, kh: 28, vet: 16,
+            bereiding: '1. Kook quinoa (150g droog) 12 min in bouillon.\n2. Grill groenten in grillpan met olijfolie.\n3. Bak biefstuk op hoog vuur, 2 min per kant (medium-rare) of naar smaak.\n4. Laat 2 min rusten voor aansnijden.' },
+        ]
+      },
+      {
+        naam: 'Zondag 24 mei', type: 'rust', badges: ['rust', 'gezin'],
+        maaltijden: [
+          { type: 'Ontbijt', naam: '1 kaiserbroodje + 1 ei (gebakken of gekookt)', kcal: 280, eiwit: 13, kh: 30, vet: 10,
+            bereiding: '1. Bak ei in koekenpan met beetje boter (gebakken), of kook 7 min (zachtgekookt) of 10 min (hardgekookt).\n2. Leg op het kaiserbroodje.' },
+          { type: 'Lunch', naam: 'Kipfilet salade met kikkererwten, feta & olijfolie', kcal: 500, eiwit: 45, kh: 22, vet: 18,
+            bereiding: '1. Bak of kook kipfilet, laat afkoelen en snijd in stukjes.\n2. Meng met uitgelekte kikkererwten, verkruimelde feta.\n3. Besprenkel met olijfolie en citroensap.\n4. Breng op smaak met peper en oregano.' },
+          { type: 'Diner', naam: '200g garnalen, volkorenpasta (80g) & tomatensaus', kcal: 540, eiwit: 48, kh: 52, vet: 10,
+            bereiding: '1. Kook pasta al dente volgens verpakking.\n2. Bak garnalen 2-3 min in knoflookboter tot roze.\n3. Verwarm tomatensaus in apart pannetje.\n4. Meng alles samen, serveer direct.' },
+        ]
+      }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+//  BOODSCHAPPEN DATA
+// ═══════════════════════════════════════════════════════
+const BOODSCHAPPEN = [
+  { categorie: 'Zuivel & eieren', items: [
+    { naam: 'Eieren', detail: '18 stuks — ma/wo/do ontbijt, ma/wo na training, vr ontbijt' },
+    { naam: 'Kwark', detail: '900g — ma ontbijt, wo ontbijt, za lunch' },
+    { naam: 'Griekse yoghurt', detail: '500g — di lunch, zo lunch' },
+    { naam: 'Feta', detail: '100g — do ontbijt, zo lunch' },
+  ]},
+  { categorie: 'Vlees & vis', items: [
+    { naam: 'Kipfilet', detail: '500g — ma lunch (wrap), do lunch, za diner' },
+    { naam: 'Zalm', detail: '400g — ma diner, vr lunch' },
+    { naam: 'Tonijn (blik)', detail: '200g — wo lunch' },
+    { naam: 'Biefstuk mager', detail: '200g — za diner' },
+    { naam: 'Garnalen', detail: '200g — zo diner' },
+  ]},
+  { categorie: 'Groente', items: [
+    { naam: 'Broccoli', detail: '300g — ma diner' },
+    { naam: 'Zoete aardappel', detail: '300g — ma diner' },
+    { naam: 'Avocado', detail: '2 stuks — di ontbijt' },
+    { naam: 'Spinazie', detail: '200g — ma lunch, do ontbijt' },
+    { naam: 'Paprika', detail: '3 stuks — ma lunch' },
+    { naam: 'Komkommer', detail: '3 stuks — wo lunch, do lunch' },
+    { naam: 'Tomaat', detail: '4 stuks — wo lunch' },
+    { naam: 'Gegrilde groenten', detail: '300g — za diner (diepvries of vers)' },
+  ]},
+  { categorie: 'Fruit', items: [
+    { naam: 'Blauwe bessen', detail: '250g — di lunch' },
+    { naam: 'Aardbeien', detail: '250g — wo ontbijt' },
+    { naam: 'Banaan', detail: '7 stuks — ma ontbijt (elke dag 1)' },
+    { naam: 'Appel', detail: '2 stuks — zo lunch' },
+  ]},
+  { categorie: 'Granen & koolhydraten', items: [
+    { naam: 'Havermout', detail: '500g — ma ontbijt, wo ontbijt, vr ontbijt' },
+    { naam: 'Volkoren brood', detail: '1 pak — di ontbijt, do ontbijt' },
+    { naam: 'Volkoren toast', detail: '1 pak — di ontbijt' },
+    { naam: 'Volkoren wraps', detail: '4 stuks — ma lunch, wo lunch' },
+    { naam: 'Zilvervliesrijst', detail: '100g — vr lunch' },
+    { naam: 'Volkorenpasta', detail: '160g — zo diner' },
+    { naam: 'Quinoa', detail: '150g — za diner' },
+  ]},
+  { categorie: 'Conserven & overig', items: [
+    { naam: 'Hummus', detail: '200g — ma lunch' },
+    { naam: 'Kikkererwten (blik)', detail: '200g — zo lunch' },
+    { naam: 'Tomatensaus (pot)', detail: '1 pot — zo diner' },
+    { naam: 'Edamame (diepvries)', detail: '150g — vr lunch' },
+    { naam: 'Olijfolie', detail: 'klein flesje — zo lunch' },
+  ]},
+  { categorie: 'Noten & zaden', items: [
+    { naam: 'Walnoten', detail: '100g — ma ontbijt' },
+    { naam: 'Mixed nuts', detail: '150g — di lunch, zo lunch' },
+  ]},
+  { categorie: 'Overig', items: [
+    { naam: 'Honing', detail: 'klein potje — wo ontbijt' },
+    { naam: 'Kaneel', detail: 'klein zakje — vr ontbijt' },
+    { naam: 'Melk', detail: '1 liter — vr ontbijt' },
+  ]},
+  { categorie: 'Vrijdagavond (afhaal)', items: [
+    { naam: 'Patat', detail: 'portie ~300g — vr diner' },
+    { naam: 'Kroket', detail: '1 stuk — vr diner' },
+  ]},
+];
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let actieveWeekId = WEKEN[0].id;
+let percentages = {};
+let notities = {};
+let boodschapStatus = {};
+
+// ═══════════════════════════════════════════════════════
+//  INITIALISEER
+// ═══════════════════════════════════════════════════════
+function initialiseer() {
+  laadData().then(() => {
+    renderApp();
+    renderBoodschappen();
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  MENU RENDER
+// ═══════════════════════════════════════════════════════
+function renderApp() {
+  const tabsEl = document.getElementById('week-tabs');
+  tabsEl.innerHTML = '';
+  WEKEN.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = 'week-tab' + (w.id === actieveWeekId ? ' actief' : '');
+    btn.textContent = w.label;
+    btn.onclick = () => { actieveWeekId = w.id; renderApp(); };
+    tabsEl.appendChild(btn);
+  });
+
+  const week = WEKEN.find(w => w.id === actieveWeekId);
+  const container = document.getElementById('dagen-container');
+  container.innerHTML = '';
+
+  let wK = 0, wE = 0, wKH = 0, wV = 0, wS = 0;
+
+  week.dagen.forEach((dag, dagIdx) => {
+    const tot = berekenDagTotalen(week, dagIdx);
+    wK += tot.kcal; wE += tot.eiwit; wKH += tot.kh; wV += tot.vet; wS += tot.score;
+    container.appendChild(maakDagCard(week, dag, dagIdx, tot));
+  });
+
+  const gem = Math.round(wS / week.dagen.length);
+  const scoreEl = document.getElementById('weekscore-tekst');
+  scoreEl.textContent = gem + '%';
+  scoreEl.className = 'weekscore-cijfer ' + (gem >= 75 ? 'score-groen' : gem >= 50 ? 'score-oranje' : 'score-rood');
+  document.getElementById('week-kcal').textContent  = wK;
+  document.getElementById('week-eiwit').textContent = wE + 'g';
+  document.getElementById('week-kh').textContent    = wKH + 'g';
+  document.getElementById('week-vet').textContent   = wV + 'g';
+}
+
 function berekenDagTotalen(week, dagIdx) {
   const dag = week.dagen[dagIdx];
   const doel = DOELEN[dag.type];
@@ -726,10 +862,8 @@ function berekenDagTotalen(week, dagIdx) {
 
   dag.maaltijden.forEach((m, mIdx) => {
     const pct = (percentages[`${week.id}_${dagIdx}_${mIdx}`] ?? 100) / 100;
-    kcal  += m.kcal  * pct;
-    eiwit += m.eiwit * pct;
-    kh    += m.kh    * pct;
-    vet   += m.vet   * pct;
+    kcal += m.kcal * pct; eiwit += m.eiwit * pct;
+    kh   += m.kh   * pct; vet   += m.vet   * pct;
   });
 
   if (dag.naTraining) { kcal += 210; eiwit += 18; }
@@ -750,54 +884,12 @@ function scoreKleur(pct) {
   return '#ef4444';
 }
 
-// ═══════════════════════════════════════════════════════
-//  RENDER
-// ═══════════════════════════════════════════════════════
-function initialiseer() {
-  laadData().then(() => renderApp());
-}
-
-function renderApp() {
-  // Week tabs
-  const tabsEl = document.getElementById('week-tabs');
-  tabsEl.innerHTML = '';
-  WEKEN.forEach(w => {
-    const btn = document.createElement('button');
-    btn.className = 'week-tab' + (w.id === actieveWeekId ? ' actief' : '');
-    btn.textContent = w.label;
-    btn.onclick = () => { actieveWeekId = w.id; renderApp(); };
-    tabsEl.appendChild(btn);
-  });
-
-  // Dagen
-  const week = WEKEN.find(w => w.id === actieveWeekId);
-  const container = document.getElementById('dagen-container');
-  container.innerHTML = '';
-
-  let wKcal = 0, wEiwit = 0, wKh = 0, wVet = 0, wScore = 0;
-
-  week.dagen.forEach((dag, dagIdx) => {
-    const tot = berekenDagTotalen(week, dagIdx);
-    wKcal += tot.kcal; wEiwit += tot.eiwit; wKh += tot.kh; wVet += tot.vet; wScore += tot.score;
-    container.appendChild(maakDagCard(week, dag, dagIdx, tot));
-  });
-
-  const gem = Math.round(wScore / week.dagen.length);
-  const scoreEl = document.getElementById('weekscore-tekst');
-  scoreEl.textContent = gem + '%';
-  scoreEl.className = 'weekscore-cijfer ' + (gem >= 75 ? 'score-groen' : gem >= 50 ? 'score-oranje' : 'score-rood');
-  document.getElementById('week-kcal').textContent  = wKcal;
-  document.getElementById('week-eiwit').textContent = wEiwit + 'g';
-  document.getElementById('week-kh').textContent    = wKh + 'g';
-  document.getElementById('week-vet').textContent   = wVet + 'g';
-}
-
 function maakDagCard(week, dag, dagIdx, totalen) {
   const card = document.createElement('div');
   card.className = 'dag-card';
   card.id = `dag-${dagIdx}`;
 
-  const badgeLabels = { training: '🏋️ Trainingsdag', rust: 'Rustdag', gezin: '👨‍👩‍👧‍👦 Gezinsontbijt', patat: '🍟 Patatavond' };
+  const badgeLabels  = { training: '🏋️ Trainingsdag', rust: 'Rustdag', gezin: '👨‍👩‍👧‍👦 Gezinsontbijt', patat: '🍟 Patatavond' };
   const badgeKlassen = { training: 'badge-training', rust: 'badge-rust', gezin: 'badge-gezin', patat: 'badge-papat' };
   const badgeHTML = dag.badges.map(b => `<span class="badge ${badgeKlassen[b]}">${badgeLabels[b]}</span>`).join('');
 
@@ -810,21 +902,27 @@ function maakDagCard(week, dag, dagIdx, totalen) {
     const key = `${week.id}_${dagIdx}_${mIdx}`;
     const pct = percentages[key] ?? 100;
     const gK = Math.round(m.kcal * pct / 100), gE = Math.round(m.eiwit * pct / 100);
-    const gKH = Math.round(m.kh * pct / 100), gV = Math.round(m.vet * pct / 100);
+    const gKH = Math.round(m.kh * pct / 100),  gV = Math.round(m.vet * pct / 100);
     return `
       <div class="maaltijd">
-        <div class="maaltijd-top">
-          <div class="maaltijd-info">
-            <div class="maaltijd-type">${m.type}</div>
-            <div class="maaltijd-naam">${m.naam}</div>
-            <div class="maaltijd-macros">
-              <span class="macro-tag tag-kcal">~${m.kcal} kcal</span>
-              <span class="macro-tag tag-eiwit">~${m.eiwit}g eiwit</span>
-              <span class="macro-tag tag-kh">~${m.kh}g kh</span>
-              <span class="macro-tag tag-vet">~${m.vet}g vet</span>
-            </div>
-          </div>
+        <div class="maaltijd-type">${m.type}</div>
+        <div class="maaltijd-naam">${m.naam}</div>
+        <div class="maaltijd-macros">
+          <span class="macro-tag tag-kcal">~${m.kcal} kcal</span>
+          <span class="macro-tag tag-eiwit">~${m.eiwit}g eiwit</span>
+          <span class="macro-tag tag-kh">~${m.kh}g kh</span>
+          <span class="macro-tag tag-vet">~${m.vet}g vet</span>
         </div>
+        ${m.bereiding ? `
+        <button class="bereiding-toggle" onclick="toggleBereiding('ber-${week.id}-${dagIdx}-${mIdx}', this)" title="Bereidingswijze" aria-label="Bereidingswijze tonen">
+          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="10.5" cy="11" rx="5.5" ry="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="5" y1="10" x2="1.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="bereiding-inhoud" id="ber-${week.id}-${dagIdx}-${mIdx}">
+          <ol>${m.bereiding.split('\n').map(s => `<li>${s.replace(/^\d+\.\s*/,'')}</li>`).join('')}</ol>
+        </div>` : ''}
         <div class="slider-sectie">
           <div class="slider-wrap">
             <input type="range" min="0" max="100" value="${pct}"
@@ -839,11 +937,14 @@ function maakDagCard(week, dag, dagIdx, totalen) {
       </div>`;
   }).join('');
 
-  const naHTML = dag.naTraining
-    ? `<div class="na-training">⚡ Na training: ${dag.naTraining}</div>` : '';
+  const naHTML = dag.naTraining ? `<div class="na-training">⚡ Na training: ${dag.naTraining}</div>` : '';
 
   const kPct = Math.min(100, Math.round(totalen.kcal  / totalen.doel.kcal  * 100));
   const ePct = Math.min(100, Math.round(totalen.eiwit / totalen.doel.eiwit * 100));
+
+  const notitieKey = `${week.id}_${dagIdx}`;
+  const notitieWaarde = notities[notitieKey] || '';
+  const notitieOpen = notitieWaarde.length > 0;
 
   card.innerHTML = `
     <div class="dag-header">
@@ -877,27 +978,33 @@ function maakDagCard(week, dag, dagIdx, totalen) {
         <div class="dag-totaal-doel">doel: ${totalen.doel.eiwit}g</div>
         <div class="voortgang-bar"><div class="voortgang-fill" style="width:${ePct}%;background:${scoreKleur(ePct)}"></div></div>
       </div>
+    </div>
+    <div class="notitie-sectie">
+      <button class="notitie-toggle" onclick="toggleNotitie('${notitieKey}', this)">
+        ${notitieOpen ? '📝 Notitie' : '+ Notitie toevoegen'}
+      </button>
+      <textarea class="notitie-veld ${notitieOpen ? 'zichtbaar' : ''}"
+        id="notitie-${notitieKey}"
+        placeholder="Hoe voelde je je vandaag? Bijzonderheden?"
+        oninput="updateNotitie('${notitieKey}', this.value)">${notitieWaarde}</textarea>
     </div>`;
 
   return card;
 }
 
 // ═══════════════════════════════════════════════════════
-//  INTERACTIE
+//  INTERACTIE MENU
 // ═══════════════════════════════════════════════════════
 function updatePct(weekId, dagIdx, mIdx, waarde) {
   const pct = parseInt(waarde);
   percentages[`${weekId}_${dagIdx}_${mIdx}`] = pct;
 
-  // Slider kleur
   const slider = document.querySelector(`input[oninput*="'${weekId}',${dagIdx},${mIdx}"]`);
   if (slider) slider.style.background = `linear-gradient(to right,#22c55e ${pct}%,#e5e7eb ${pct}%)`;
 
-  // Pct tekst
   const pctEl = document.getElementById(`pct-${weekId}-${dagIdx}-${mIdx}`);
   if (pctEl) pctEl.textContent = pct + '%';
 
-  // Gegeten macros
   const week = WEKEN.find(w => w.id === weekId);
   const m = week.dagen[dagIdx].maaltijden[mIdx];
   const gegEl = document.getElementById(`geg-${weekId}-${dagIdx}-${mIdx}`);
@@ -907,23 +1014,18 @@ function updatePct(weekId, dagIdx, mIdx, waarde) {
   }
 
   herbereken(weekId, dagIdx);
-
-  toonSync('Opslaan…', true);
-  clearTimeout(window._saveTimer);
-  window._saveTimer = setTimeout(slaOp, 1200);
+  debounceOpslaan();
 }
 
 function herbereken(weekId, dagIdx) {
   const week = WEKEN.find(w => w.id === weekId);
   const tot = berekenDagTotalen(week, dagIdx);
 
-  // Dag totalen tekst
   const ke = document.getElementById(`dag-kcal-${dagIdx}`);
   const ee = document.getElementById(`dag-eiwit-${dagIdx}`);
   if (ke) ke.textContent = tot.kcal;
   if (ee) ee.textContent = tot.eiwit + 'g';
 
-  // Progress bars + ring
   const card = document.getElementById(`dag-${dagIdx}`);
   if (card) {
     const bars = card.querySelectorAll('.voortgang-fill');
@@ -943,7 +1045,6 @@ function herbereken(weekId, dagIdx) {
     if (ringTekst) ringTekst.textContent = tot.score + '%';
   }
 
-  // Weekscore
   let wK = 0, wE = 0, wKH = 0, wV = 0, wS = 0;
   week.dagen.forEach((_, i) => {
     const t = berekenDagTotalen(week, i);
@@ -957,6 +1058,79 @@ function herbereken(weekId, dagIdx) {
   document.getElementById('week-eiwit').textContent = wE + 'g';
   document.getElementById('week-kh').textContent    = wKH + 'g';
   document.getElementById('week-vet').textContent   = wV + 'g';
+}
+
+// ═══════════════════════════════════════════════════════
+//  BEREIDING
+// ═══════════════════════════════════════════════════════
+function toggleBereiding(id, btn) {
+  const el = document.getElementById(id);
+  el.classList.toggle('zichtbaar');
+}
+
+// ═══════════════════════════════════════════════════════
+//  NOTITIES
+// ═══════════════════════════════════════════════════════
+function toggleNotitie(key, btn) {
+  const veld = document.getElementById(`notitie-${key}`);
+  const open = veld.classList.toggle('zichtbaar');
+  btn.textContent = open ? '📝 Notitie' : '+ Notitie toevoegen';
+  if (open) veld.focus();
+}
+
+function updateNotitie(key, waarde) {
+  notities[key] = waarde;
+  debounceOpslaan();
+}
+
+// ═══════════════════════════════════════════════════════
+//  BOODSCHAPPEN
+// ═══════════════════════════════════════════════════════
+function renderBoodschappen() {
+  const week = WEKEN.find(w => w.id === actieveWeekId);
+  document.getElementById('boodschappen-week-label').textContent = '🛒 Boodschappen voor ' + week.label;
+  const container = document.getElementById('boodschappen-container');
+  container.innerHTML = '';
+
+  BOODSCHAPPEN.forEach((cat, cIdx) => {
+    const div = document.createElement('div');
+    div.className = 'boodschappen-categorie';
+    div.innerHTML = `<div class="boodschappen-categorie-titel">${cat.categorie}</div>`;
+
+    cat.items.forEach((item, iIdx) => {
+      const key = `${cIdx}_${iIdx}`;
+      const gekocht = !!boodschapStatus[key];
+      const el = document.createElement('div');
+      el.className = 'boodschap-item' + (gekocht ? ' gekocht' : '');
+      el.innerHTML = `
+        <div class="boodschap-checkbox">${gekocht ? '✓' : ''}</div>
+        <span class="boodschap-naam">${item.naam}</span>
+        <span class="boodschap-detail">${item.detail}</span>`;
+      el.onclick = () => {
+        boodschapStatus[key] = !boodschapStatus[key];
+        renderBoodschappen();
+        debounceOpslaan();
+      };
+      div.appendChild(el);
+    });
+
+    container.appendChild(div);
+  });
+
+  updateBoodschappenVoortgang();
+}
+
+function updateBoodschappenVoortgang() {
+  const totaal = BOODSCHAPPEN.reduce((s, c) => s + c.items.length, 0);
+  const gekocht = Object.values(boodschapStatus).filter(Boolean).length;
+  document.getElementById('boodschappen-voortgang-tekst').textContent = `${gekocht} van ${totaal} gekocht`;
+  document.getElementById('boodschappen-voortgang-fill').style.width = Math.round(gekocht / totaal * 100) + '%';
+}
+
+function resetBoodschappen() {
+  boodschapStatus = {};
+  renderBoodschappen();
+  debounceOpslaan();
 }
 </script>
 </body>
